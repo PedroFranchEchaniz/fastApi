@@ -1,7 +1,6 @@
 from typing import List
 from pydantic import BaseModel
+from Student import Student  # Asegúrate de que la ruta de importación sea correcta
 
-import Student
-
-class School (BaseModel):
-    students: List [Student]
+class School(BaseModel):
+    students: List[Student] = []
