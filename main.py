@@ -39,3 +39,8 @@ async def edit_student(id:UUID, edit_student:Student):
         raise HTTPException(status_code=404, detail="Error editing")
 
 
+@app.delete("/alumno/{id}", status_code=HTTP_200_OK)
+async def delete_student(id:UUID):
+    for student in school.students:
+        if student.id == id:
+            school.students.remove(student)
