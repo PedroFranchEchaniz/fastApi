@@ -1,13 +1,14 @@
 from pydantic import BaseModel
 from uuid import UUID, uuid4
+from sqlalchemy import Column, Integer, String, DateTime
+from database import Base
 
 
-class Student(BaseModel):
-    id: UUID = None
-    name: str
-    age: int
+class Student(Base):
 
-    def __init__(__pydantic_self__, **data):
-        if 'id' not in data:
-            data['id'] = uuid4()
-        super().__init__(**data)
+    id = Column(UUID, primary_key=True, index=True)
+    name: Column(String)
+    age: Column(Integer)
+
+    class Config:
+        from_attributes = True
